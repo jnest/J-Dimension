@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="21db0fd6481349b8b401aab7e7b1c3a5" Name="Diagram1">
+        <EntityTypeShape EntityType="MechGameModel.Mech" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MechGameModel.MechGroup" Width="1.5" PointX="3.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MechGameModel.MechTemplate" Width="1.5" PointX="9.375" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MechGameModel.sysdiagram" Width="1.5" PointX="7.625" PointY="2.875" IsExpanded="false" />
+        <AssociationConnector Association="MechGameModel.FK_Mech_MechGroup" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
