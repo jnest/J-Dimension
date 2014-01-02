@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MechGameModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="MechGameModelStoreContainer">
-    <EntitySet Name="Mech" EntityType="MechGameModel.Store.Mech" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="MechGroup" EntityType="MechGameModel.Store.MechGroup" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="MechTemplate" EntityType="MechGameModel.Store.MechTemplate" store:Type="Tables" Schema="dbo" />
+<Schema Namespace="J_Dimension.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="J_DimensionStoreContainer">
+    <EntitySet Name="Mech" EntityType="J_Dimension.Store.Mech" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MechGroup" EntityType="J_Dimension.Store.MechGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MechTemplate" EntityType="J_Dimension.Store.MechTemplate" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="Mech">
     <Key>

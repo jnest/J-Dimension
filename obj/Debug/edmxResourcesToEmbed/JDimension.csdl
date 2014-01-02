@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MechGameModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="MechGameEntities" p1:LazyLoadingEnabled="true">
-    <EntitySet Name="Mechs" EntityType="MechGameModel.Mech" />
-    <EntitySet Name="MechGroups" EntityType="MechGameModel.MechGroup" />
-    <EntitySet Name="MechTemplates" EntityType="MechGameModel.MechTemplate" />
-    <EntitySet Name="sysdiagrams" EntityType="MechGameModel.sysdiagram" />
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -35,56 +31,10 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <AssociationSet Name="FK_Mech_MechGroup" Association="MechGameModel.FK_Mech_MechGroup">
-      <End Role="MechGroup" EntitySet="MechGroups" />
-      <End Role="Mech" EntitySet="Mechs" />
-    </AssociationSet>
+    <EntitySet Name="Meches" EntityType="MechGameModel.Mech" />
+    <EntitySet Name="MechGroups" EntityType="MechGameModel.MechGroup" />
+    <EntitySet Name="MechTemplates" EntityType="MechGameModel.MechTemplate" />
   </EntityContainer>
-  <EntityType Name="Mech">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="Attack" Type="Int32" Nullable="false" />
-    <Property Name="Defense" Type="Int32" Nullable="false" />
-    <Property Name="MechGroupId" Type="Int32" />
-    <NavigationProperty Name="MechGroup" Relationship="MechGameModel.FK_Mech_MechGroup" FromRole="Mech" ToRole="MechGroup" />
-    <Property Type="Int32" Name="Weight" Nullable="false" />
-    <Property Type="String" Name="Faction" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="Range" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Type="String" Name="Speed" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Type="String" Name="Pilot" MaxLength="10" FixedLength="true" Unicode="true" />
-  </EntityType>
-  <EntityType Name="MechGroup">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="Attack" Type="Int32" />
-    <Property Name="Defense" Type="Int32" />
-    <NavigationProperty Name="Mech" Relationship="MechGameModel.FK_Mech_MechGroup" FromRole="MechGroup" ToRole="Mech" />
-  </EntityType>
-  <EntityType Name="MechTemplate">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Type="Int32" Name="Weight" Nullable="false" />
-    <Property Type="String" Name="Faction" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Type="Int32" Name="principal_id" Nullable="false" />
-    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="version" />
-    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
     <Property Type="Binary" Name="definition" Nullable="true" />
@@ -96,16 +46,37 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
-  <Association Name="FK_Mech_MechGroup">
-    <End Type="MechGameModel.MechGroup" Role="MechGroup" Multiplicity="0..1" />
-    <End Type="MechGameModel.Mech" Role="Mech" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MechGroup">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Mech">
-        <PropertyRef Name="MechGroupId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="Mech">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Attack" Nullable="false" />
+    <Property Type="Int32" Name="Defense" Nullable="false" />
+    <Property Type="Int32" Name="Weight" Nullable="false" />
+    <Property Type="String" Name="Range" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Speed" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Pilot" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Faction" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="MechGroupId" />
+  </EntityType>
+  <EntityType Name="MechGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Attack" />
+    <Property Type="Int32" Name="Defense" />
+  </EntityType>
+  <EntityType Name="MechTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Weight" Nullable="false" />
+    <Property Type="String" Name="Faction" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

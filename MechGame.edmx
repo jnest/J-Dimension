@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="J_Dimension.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="J_DimensionStoreContainer">
+          <EntitySet Name="Mech" EntityType="J_Dimension.Store.Mech" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MechGroup" EntityType="J_Dimension.Store.MechGroup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MechTemplate" EntityType="J_Dimension.Store.MechTemplate" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Mech">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Attack" Type="int" Nullable="false" />
+          <Property Name="Defense" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="Range" Type="nvarchar" MaxLength="10" />
+          <Property Name="Speed" Type="nvarchar" MaxLength="10" />
+          <Property Name="Pilot" Type="nvarchar" MaxLength="10" />
+          <Property Name="Faction" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MechGroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="MechGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Attack" Type="int" />
+          <Property Name="Defense" Type="int" />
+        </EntityType>
+        <EntityType Name="MechTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="Faction" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="J_Dimension" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MechGameEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Meches" EntityType="J_Dimension.Mech" />
+          <EntitySet Name="MechGroups" EntityType="J_Dimension.MechGroup" />
+          <EntitySet Name="MechTemplates" EntityType="J_Dimension.MechTemplate" />
+        </EntityContainer>
+        <EntityType Name="Mech">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Attack" Type="Int32" Nullable="false" />
+          <Property Name="Defense" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="Range" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Speed" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Pilot" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Faction" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MechGroupId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MechGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Attack" Type="Int32" />
+          <Property Name="Defense" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MechTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="Faction" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="J_DimensionStoreContainer" CdmEntityContainer="MechGameEntities">
+          <EntitySetMapping Name="Meches">
+            <EntityTypeMapping TypeName="J_Dimension.Mech">
+              <MappingFragment StoreEntitySet="Mech">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Attack" ColumnName="Attack" />
+                <ScalarProperty Name="Defense" ColumnName="Defense" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Range" ColumnName="Range" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Pilot" ColumnName="Pilot" />
+                <ScalarProperty Name="Faction" ColumnName="Faction" />
+                <ScalarProperty Name="MechGroupId" ColumnName="MechGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MechGroups">
+            <EntityTypeMapping TypeName="J_Dimension.MechGroup">
+              <MappingFragment StoreEntitySet="MechGroup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Attack" ColumnName="Attack" />
+                <ScalarProperty Name="Defense" ColumnName="Defense" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MechTemplates">
+            <EntityTypeMapping TypeName="J_Dimension.MechTemplate">
+              <MappingFragment StoreEntitySet="MechTemplate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Faction" ColumnName="Faction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

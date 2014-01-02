@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="J_Dimension" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MechGameEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Meches" EntityType="J_Dimension.Mech" />
+    <EntitySet Name="MechGroups" EntityType="J_Dimension.MechGroup" />
+    <EntitySet Name="MechTemplates" EntityType="J_Dimension.MechTemplate" />
+  </EntityContainer>
+  <EntityType Name="Mech">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Attack" Type="Int32" Nullable="false" />
+    <Property Name="Defense" Type="Int32" Nullable="false" />
+    <Property Name="Weight" Type="Int32" Nullable="false" />
+    <Property Name="Range" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Speed" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Pilot" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Faction" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MechGroupId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MechGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Attack" Type="Int32" />
+    <Property Name="Defense" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MechTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Weight" Type="Int32" Nullable="false" />
+    <Property Name="Faction" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+</Schema>
