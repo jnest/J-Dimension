@@ -254,29 +254,29 @@
     </Compile>
     <Compile Include="App_Code\LinqDataAccess.cs" />
     <Compile Include="App_Code\Calculations.cs" />
-    <Compile Include="JDimension.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JDimension.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="JDimension.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JDimension.tt</DependentUpon>
-    </Compile>
-    <Compile Include="JDimension.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JDimension.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Mech.cs">
-      <DependentUpon>JDimension.tt</DependentUpon>
+      <DependentUpon>MechGame.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MechGame.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MechGame.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MechGame.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MechGame.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MechGame.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MechGame.edmx</DependentUpon>
     </Compile>
     <Compile Include="MechGroup.cs">
-      <DependentUpon>JDimension.tt</DependentUpon>
+      <DependentUpon>MechGame.tt</DependentUpon>
     </Compile>
     <Compile Include="MechTemplate.cs">
-      <DependentUpon>JDimension.tt</DependentUpon>
+      <DependentUpon>MechGame.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Lance.cs" />
     <Compile Include="Models\Mech.cs" />
@@ -313,22 +313,22 @@
   <ItemGroup>
     <Content Include="Site1.Master" />
     <Content Include="packages.config" />
-    <EntityDeploy Include="JDimension.edmx">
+    <EntityDeploy Include="MechGame.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JDimension.Designer.cs</LastGenOutput>
+      <LastGenOutput>MechGame.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="JDimension.Context.tt">
+    <Content Include="MechGame.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JDimension.edmx</DependentUpon>
-      <LastGenOutput>JDimension.Context.cs</LastGenOutput>
+      <DependentUpon>MechGame.edmx</DependentUpon>
+      <LastGenOutput>MechGame.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="JDimension.edmx.diagram">
-      <DependentUpon>JDimension.edmx</DependentUpon>
+    <Content Include="MechGame.edmx.diagram">
+      <DependentUpon>MechGame.edmx</DependentUpon>
     </Content>
-    <Content Include="JDimension.tt">
+    <Content Include="MechGame.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JDimension.edmx</DependentUpon>
-      <LastGenOutput>JDimension.cs</LastGenOutput>
+      <DependentUpon>MechGame.edmx</DependentUpon>
+      <LastGenOutput>MechGame.cs</LastGenOutput>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

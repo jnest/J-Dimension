@@ -25,7 +25,7 @@ namespace J_Dimension
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Mech> Mechs { get; set; } 
+        public DbSet<Mech> Mechs { get; set; }
         public DbSet<MechGroup> MechGroups { get; set; }
         public DbSet<MechTemplate> MechTemplates { get; set; }
     }

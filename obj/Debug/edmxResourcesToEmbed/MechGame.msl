@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="J_DimensionStoreContainer" CdmEntityContainer="MechGameEntities">
+  <EntityContainerMapping StorageEntityContainer="MechAppDatabaseModelStoreContainer" CdmEntityContainer="MechGameEntities">
     <EntitySetMapping Name="Meches">
-      <EntityTypeMapping TypeName="J_Dimension.Mech">
+      <EntityTypeMapping TypeName="MechAppDatabaseModel.Mech">
         <MappingFragment StoreEntitySet="Mech">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -12,13 +12,13 @@
           <ScalarProperty Name="Range" ColumnName="Range" />
           <ScalarProperty Name="Speed" ColumnName="Speed" />
           <ScalarProperty Name="Pilot" ColumnName="Pilot" />
-          <ScalarProperty Name="Faction" ColumnName="Faction" />
           <ScalarProperty Name="MechGroupId" ColumnName="MechGroupId" />
+          <ScalarProperty Name="Faction" ColumnName="Faction" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MechGroups">
-      <EntityTypeMapping TypeName="J_Dimension.MechGroup">
+      <EntityTypeMapping TypeName="MechAppDatabaseModel.MechGroup">
         <MappingFragment StoreEntitySet="MechGroup">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -28,7 +28,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MechTemplates">
-      <EntityTypeMapping TypeName="J_Dimension.MechTemplate">
+      <EntityTypeMapping TypeName="MechAppDatabaseModel.MechTemplate">
         <MappingFragment StoreEntitySet="MechTemplate">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />

@@ -4,32 +4,36 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="J_Dimension.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="J_DimensionStoreContainer">
-          <EntitySet Name="Mech" EntityType="J_Dimension.Store.Mech" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MechGroup" EntityType="J_Dimension.Store.MechGroup" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MechTemplate" EntityType="J_Dimension.Store.MechTemplate" store:Type="Tables" Schema="dbo" />
+      <Schema Namespace="MechAppDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MechAppDatabaseModelStoreContainer">
+          <EntitySet Name="Mech" EntityType="MechAppDatabaseModel.Store.Mech" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MechGroup" EntityType="MechAppDatabaseModel.Store.MechGroup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MechTemplate" EntityType="MechAppDatabaseModel.Store.MechTemplate" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Mech_0" Association="MechAppDatabaseModel.Store.FK_Mech_0">
+            <End Role="MechGroup" EntitySet="MechGroup" />
+            <End Role="Mech" EntitySet="Mech" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Mech">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Attack" Type="int" Nullable="false" />
-          <Property Name="Defense" Type="int" Nullable="false" />
+          <Property Name="Attack" Type="int" />
+          <Property Name="Defense" Type="int" />
           <Property Name="Weight" Type="int" Nullable="false" />
           <Property Name="Range" Type="nvarchar" MaxLength="10" />
           <Property Name="Speed" Type="nvarchar" MaxLength="10" />
           <Property Name="Pilot" Type="nvarchar" MaxLength="10" />
-          <Property Name="Faction" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="MechGroupId" Type="int" />
+          <Property Name="Faction" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="MechGroup">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Attack" Type="int" />
           <Property Name="Defense" Type="int" />
@@ -38,62 +42,92 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Weight" Type="int" Nullable="false" />
           <Property Name="Faction" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_Mech_0">
+          <End Role="MechGroup" Type="MechAppDatabaseModel.Store.MechGroup" Multiplicity="0..1" />
+          <End Role="Mech" Type="MechAppDatabaseModel.Store.Mech" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MechGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mech">
+              <PropertyRef Name="MechGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="J_Dimension" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MechAppDatabaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="MechGameEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Meches" EntityType="J_Dimension.Mech" />
-          <EntitySet Name="MechGroups" EntityType="J_Dimension.MechGroup" />
-          <EntitySet Name="MechTemplates" EntityType="J_Dimension.MechTemplate" />
+          <EntitySet Name="Meches" EntityType="MechAppDatabaseModel.Mech" />
+          <EntitySet Name="MechGroups" EntityType="MechAppDatabaseModel.MechGroup" />
+          <EntitySet Name="MechTemplates" EntityType="MechAppDatabaseModel.MechTemplate" />
+          <AssociationSet Name="FK_Mech_0" Association="MechAppDatabaseModel.FK_Mech_0">
+            <End Role="MechGroup" EntitySet="MechGroups" />
+            <End Role="Mech" EntitySet="Meches" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Mech">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Attack" Type="Int32" Nullable="false" />
-          <Property Name="Defense" Type="Int32" Nullable="false" />
+          <Property Name="Attack" Type="Int32" />
+          <Property Name="Defense" Type="Int32" />
           <Property Name="Weight" Type="Int32" Nullable="false" />
           <Property Name="Range" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
           <Property Name="Speed" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
           <Property Name="Pilot" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="Faction" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="MechGroupId" Type="Int32" />
+          <Property Name="Faction" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="MechGroup" Relationship="MechAppDatabaseModel.FK_Mech_0" FromRole="Mech" ToRole="MechGroup" />
         </EntityType>
         <EntityType Name="MechGroup">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Attack" Type="Int32" />
           <Property Name="Defense" Type="Int32" />
+          <NavigationProperty Name="Mechs" Relationship="MechAppDatabaseModel.FK_Mech_0" FromRole="MechGroup" ToRole="Mech" />
         </EntityType>
         <EntityType Name="MechTemplate">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Weight" Type="Int32" Nullable="false" />
           <Property Name="Faction" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_Mech_0">
+          <End Role="MechGroup" Type="MechAppDatabaseModel.MechGroup" Multiplicity="0..1" />
+          <End Role="Mech" Type="MechAppDatabaseModel.Mech" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MechGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mech">
+              <PropertyRef Name="MechGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="J_DimensionStoreContainer" CdmEntityContainer="MechGameEntities">
+        <EntityContainerMapping StorageEntityContainer="MechAppDatabaseModelStoreContainer" CdmEntityContainer="MechGameEntities">
           <EntitySetMapping Name="Meches">
-            <EntityTypeMapping TypeName="J_Dimension.Mech">
+            <EntityTypeMapping TypeName="MechAppDatabaseModel.Mech">
               <MappingFragment StoreEntitySet="Mech">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -103,13 +137,13 @@
                 <ScalarProperty Name="Range" ColumnName="Range" />
                 <ScalarProperty Name="Speed" ColumnName="Speed" />
                 <ScalarProperty Name="Pilot" ColumnName="Pilot" />
-                <ScalarProperty Name="Faction" ColumnName="Faction" />
                 <ScalarProperty Name="MechGroupId" ColumnName="MechGroupId" />
+                <ScalarProperty Name="Faction" ColumnName="Faction" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MechGroups">
-            <EntityTypeMapping TypeName="J_Dimension.MechGroup">
+            <EntityTypeMapping TypeName="MechAppDatabaseModel.MechGroup">
               <MappingFragment StoreEntitySet="MechGroup">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -119,7 +153,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MechTemplates">
-            <EntityTypeMapping TypeName="J_Dimension.MechTemplate">
+            <EntityTypeMapping TypeName="MechAppDatabaseModel.MechTemplate">
               <MappingFragment StoreEntitySet="MechTemplate">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
