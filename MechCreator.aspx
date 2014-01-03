@@ -18,7 +18,7 @@
                 <td style="width: 146px">&nbsp;</td>
                 <td rowspan="5" style="width: 568px">
                             
-                        <asp:Label ID="lblMechName" runat="server" style=""></asp:Label>
+                        <asp:Label ID="lblMechName" runat="server" style="display:none;"></asp:Label>
                             
                 </td>
                 <td>
@@ -57,7 +57,7 @@
         
                         </td>
                 <td style="height: 49px">
-                        <input id="btnSelect" type="button" value="Select" style="width: 111px; "/></td>
+                        <input id="btnSelect" type="button" value="Select" style="width: 111px; display:none; "/></td>
             </tr>
             <tr>
                 <td style="width: 85px; height: 49px; text-align: left;"><span style="font-size: small">Faction</span>:</td>
@@ -67,7 +67,7 @@
                         <asp:listItem>Clan</asp:listItem>
                     </asp:DropDownList>
                         </td>
-                <td style="height: 49px"><asp:DropDownList ID="ddlMechList" DataSourceID="EntityDataSource1" runat="server" DataTextField="Name" DataValueField="Id" AutoPostBack="false" EnableViewState="False" ViewStateMode="disabled" style="margin-left: 3px; margin-top: 3px; " Height="18px" Width="111px"> 
+                <td style="height: 49px"><asp:DropDownList ID="ddlMechList" DataSourceID="EntityDataSource1" runat="server" DataTextField="Name" DataValueField="Id" AutoPostBack="false" EnableViewState="False" ViewStateMode="disabled" style="margin-left: 3px; margin-top: 3px; display:none;" Height="18px" Width="111px"> 
                             </asp:DropDownList>
                             
                         </td>
