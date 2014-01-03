@@ -93,14 +93,12 @@
             <tr>
                 <td style="width: 225px; text-align: left;">
                     
+                            <br />
+                            <br />
+                    
                             <asp:Button ID="btnBattle" runat="server" OnClick="OnClickBattle" Text="Battle" Width="132px" Height="106px" />
                         
                     <br />
-                    <br />
-                    <asp:Label ID="Label22" runat="server" Text="Margin of Victory"></asp:Label>
-                    <br />
-                    <br />
-                    <asp:Label ID="lblMargin" runat="server"></asp:Label>
                     <br />
                     <br />
                     

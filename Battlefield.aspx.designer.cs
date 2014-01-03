@@ -202,24 +202,6 @@ namespace J_Dimension {
         protected global::System.Web.UI.WebControls.Button btnBattle;
         
         /// <summary>
-        /// Label22 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label22;
-        
-        /// <summary>
-        /// lblMargin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMargin;
-        
-        /// <summary>
         /// lblResult control.
         /// </summary>
         /// <remarks>
