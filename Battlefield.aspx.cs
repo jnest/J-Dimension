@@ -113,7 +113,7 @@ namespace J_Dimension
             for (int i = 0; i < 4; i++)     //If any mech in the lance is still operational, reflect that in the lances defense rating.
             {
                 BaseMech mech = lance.Mechs[i];
-                if (mech.MechDefense > 0) lance.LanceDefense += mech.MechDefense;                              
+                if (mech.MechDefense > 0) lance.LanceDefense += (int)mech.MechDefense;                              
             }            
         }
 
@@ -169,7 +169,7 @@ namespace J_Dimension
             double tempMechAttack = 0;            
             int mechAttack = 0;
             int divisor = 4;            //Break the mech's total attack rating into 4 seperate shots.
-            tempMechAttack = mech.MechAttack / divisor;  
+            tempMechAttack = (double)mech.MechAttack / divisor;  
            
             for (int i = 0; i < divisor; i++)
             {

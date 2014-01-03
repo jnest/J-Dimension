@@ -27,8 +27,8 @@ namespace J_Dimension.Models
                 if (mech.MechGroupId == mechGroupRow)
                 {
                     Mechs.Add(new BaseMech(mech));                    
-                    LanceAttack += mech.Attack;
-                    LanceDefense += mech.Defense;
+                    LanceAttack += (int)mech.Attack;
+                    LanceDefense += (int)mech.Defense;
                 }
             }
         }          

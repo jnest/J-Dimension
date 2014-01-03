@@ -16,13 +16,15 @@ namespace J_Dimension
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Attack { get; set; }
-        public int Defense { get; set; }
+        public Nullable<int> Attack { get; set; }
+        public Nullable<int> Defense { get; set; }
         public int Weight { get; set; }
         public string Range { get; set; }
         public string Speed { get; set; }
         public string Pilot { get; set; }
-        public string Faction { get; set; }
         public Nullable<int> MechGroupId { get; set; }
+        public string Faction { get; set; }
+    
+        public virtual MechGroup MechGroup { get; set; }
     }
 }

@@ -7,9 +7,9 @@
         public string MechName { get; set; }
         public string WeightClass { get; set; }
         public string Faction { get; set; }
-        public int MechWeight { get; set; }
-        public int MechAttack { get; set; }
-        public int MechDefense { get; set; }
+        public int MechWeight { get; set; } 
+        public int? MechAttack { get; set; }
+        public int? MechDefense { get; set; }
         public int BattlePosition { get; set; }
 
         public BaseMech(Mech mech) 

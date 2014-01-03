@@ -14,9 +14,16 @@ namespace J_Dimension
     
     public partial class MechGroup
     {
+        public MechGroup()
+        {
+            this.Mechs = new HashSet<Mech>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public Nullable<int> Attack { get; set; }
         public Nullable<int> Defense { get; set; }
+    
+        public virtual ICollection<Mech> Mechs { get; set; }
     }
 }
